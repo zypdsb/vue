@@ -20,9 +20,14 @@
         params: {}
       }) */
 
-      const { data: res } = await axios.get('http://www.liulongbin.top:3006/api/getbooks', {
+      try{
+	  const { data: res } = await axios.get('http://www.liulongbin.top:3006/api/getboks', {
         params: { id: 1 }
       })
+	  }catch(e){
+		console.log(e.message)
+		return;
+	  }
       console.log(res)
     })
 
