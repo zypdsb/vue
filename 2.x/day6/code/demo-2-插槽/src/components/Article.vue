@@ -5,6 +5,9 @@
     <div class="header-box">
       <slot name="title"></slot>
     </div>
+    <div class="footer-box">
+      <slot name="default"></slot>
+    </div>
 
     <!-- 文章的内容 -->
     <div class="content-box">

@@ -1,16 +1,19 @@
 <template>
   <div class="app-container">
-    <h1 v-color="color">App 根组件</h1>
-    <p v-color="'red'">测试</p>
+    <h1 v-color="color1">App 根组件</h1>
+    <p v-color="color2">测试</p>
 
-    <button @click="color = 'green'">改变 color 的颜色值</button>
+    <button @click="color1 = 'green'">改变 color 的颜色值</button>
     <hr />
 
     <Article>
-      <template #title>
+      <template #default>
         <h3>一首诗</h3>
       </template>
-
+      <template #default>
+        <h3>第二首诗</h3>
+      </template>
+      <h3>第三首诗</h3>
       <template #content="{ msg, user }">
         <div>
           <p>啊，大海，全是水。</p>
@@ -52,7 +55,8 @@ import Article from '@/components/Article.vue'
 export default {
   data() {
     return {
-      color: 'blue'
+      color1: 'blue',
+        color2: 'red'
     }
   },
   components: {
@@ -62,7 +66,7 @@ export default {
   // 私有自定义指令的节点
   directives: {
     // 定义名为 color 的指令，指向一个配置对象
-    /* color: {
+     color: {
       // 当指令第一次被绑定到元素上的时候，会立即触发 bind 函数
       // 形参中的 el 表示当前指令所绑定到的那个 DOM 对象
       bind(el, binding) {
@@ -72,12 +76,13 @@ export default {
       // 在 DOM 更新的时候，会触发 update 函数
       update(el, binding) {
         console.log('触发了 v-color 的 update 函数')
+          debugger
         el.style.color = binding.value
       }
-    } */
-    color(el, binding) {
-      el.style.color = binding.value
     }
+    /*color(el, binding) {
+      el.style.color = binding.value
+    }*/
   }
 }
 </script>
